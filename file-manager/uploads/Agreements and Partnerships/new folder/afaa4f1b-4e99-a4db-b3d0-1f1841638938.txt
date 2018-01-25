@@ -1,0 +1,1 @@
+UPDATE `pahro`.`pahro__menu_system` SET `menu_url` = 'case-category/add/' WHERE `pahro__menu_system`.`menu_id` =5 AND `pahro__menu_system`.`menu_text` = 'Add Case Category' AND `pahro__menu_system`.`menu_url` = 'case-category/add' AND `pahro__menu_system`.`status` =1 LIMIT 1 ;

@@ -1,0 +1,72 @@
+<?php $splittedUrl = explode("/", $_SERVER['REQUEST_URI']);?>
+<div id="find_players_main_div_wrap">
+	<div id="welcome-usr">
+		Welcome <span><?php echo $_SESSION['logged_user']['username']; ?></span>! | 
+		<a title="Click to change your account details" href="<?php echo WEB_URL;?>/pahro/<?php echo (!$allow_pahro_access) ? "acc-edit" : "edit";?>/?pahro_id=<?php echo $_SESSION['logged_user']['id'];?>">Account Settings</a> |
+		<a title="Click to Logout" href="<?php echo WEB_URL;?>/system/logout/">Log out</a><br />
+	</div>
+    <div style="float:right;">    
+    <?php if (count($logged_user_countries) > 1):?>
+   		<select name="current_work_env" id="current_work_env" class="mediumSelectBoX">
+        	<?php foreach($logged_user_countries as $each_country):?>
+            <option value="<?php echo $each_country['country_id'];?>" <?php if ($_SESSION['curr_country']['country_code'] == $each_country['country_id']) echo 'selected=selected';?>><?php echo $each_country['country_name'];?></option>
+            <?php endforeach; ?>
+        </select>
+    <?php else:?>
+    <span class="defaultFont">Your country is </span><span class="defaultFont specChars"><?php echo $logged_user_countries[0]['country_name'];?></span>
+    <?php endif;?>
+    </div>    
+    <div id="find_players_main_div">
+        <?php if ((!$case_category_related_search) && (!$case_related_search)):?>
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function(){
+			var data_user_fname = "<?php echo Configuration::grab_names_for_search_suggestions($splittedUrl[1], 'first_name', $_SESSION['logged_user']['countries'], $_SESSION['curr_country']['country_code']);?>".split("|");
+				$("#first_name").autocomplete(data_user_fname);
+			});
+			$(document).ready(function(){
+			var data_user_lname = "<?php echo Configuration::grab_names_for_search_suggestions($splittedUrl[1], 'last_name', $_SESSION['logged_user']['countries'], $_SESSION['curr_country']['country_code']);?>".split("|");
+				$("#surname").autocomplete(data_user_lname);
+			});
+        </script>
+		<div class="main-form-text-container">
+			<div class="box-left">&nbsp;</div>
+			<div class="box-name"><p class="form-text-center">First Name</p></div>
+			<div class="box-name"><p class="form-text-center">Last name</p></div>
+			<div class="box-right">&nbsp;</div>
+		</div>
+		<div class="main-element-container-clients">
+			<div class="box-left"><p class="form-text-large-clients"><?php echo Configuration::display_the_main_find_form_header($_SERVER['REQUEST_URI']);?></p></div>
+			<div class="box-name"><input type="text" id="first_name" class="input-element-client" name="first_name" value="<?php echo (isset($_GET['fname'])) ? $_GET['fname'] : "";?>" /></div>
+			<div class="box-name"><input type="text" id="surname" class="input-element-client" name="surname" value="<?php echo (isset($_GET['sname'])) ? $_GET['sname'] : "";?>" /></div>
+			<div class="box-right"><input id="btn-search" title="Click to search" type="image" name="find_player" value="Go" src="../../public/images/go-btn.jpg" onclick="javascript:submit_the_search_query('<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "pfa_addbook";?>');" /><input type="hidden" id="searchController" value="<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "client";?>" /></div>
+		</div>                                                          
+        </div>                
+        <?php elseif (($case_category_related_search) && (!$case_related_search)):?>        
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function(){
+				var data_case = "<?php echo Configuration::grab_case_categeries_for_search_suggestions();?>".split("|");
+				$("#cat_name").autocomplete(data_case);
+			});
+        </script>
+        <div class="main-form-text-container"><p class="form-text">Find</div>
+        <div class="main-element-container">
+            <div class="lable-container"><p class="form-text-large">Category</p></div>
+            <div class="element-container-input"><input type="text" class="input-element" id="cat_name" name="cat_name" value="<?php echo (isset($_GET['cat_name'])) ? $_GET['cat_name'] : "";?>" /></div>
+            <div class="element-container-btn"><input id="btn-search" title="Click to search" type="image" src="../../public/images/go-btn.jpg" name="find_player" value="Go" onclick="javascript:submit_the_search_query('<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "case";?>');" /><input type="hidden" id="searchController" value="<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "case";?>" /></div>
+        </div>
+    	<?php else:?>
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function(){
+				var data_case = "<?php echo Configuration::grab_case_ids_for_search_suggestions($_SESSION['logged_user']['countries'], $_SESSION['curr_country']['country_code']);?>".split("|");
+				$("#case_id").autocomplete(data_case);
+			});
+        </script>
+        <div class="main-form-text-container"><p class="form-text">Case ID</p></div>
+        <div class="main-element-container">
+            <div class="lable-container"><p class="form-text-large">Find Case</p></div>
+            <div class="element-container-input"><input type="text" class="input-element" id="case_id" name="case_id" value="<?php echo (isset($_GET['case_id'])) ? $_GET['case_id'] : "";?>" /></div>
+            <div class="element-container-btn"><input id="btn-search" title="Click to search" type="image" src="../../public/images/go-btn.jpg" name="find_player" value="Go" onclick="javascript:submit_the_search_query('<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "case";?>');" /><input type="hidden" id="searchController" value="<?php echo ($splittedUrl[1] != "") ? $splittedUrl[1] : "case";?>" /></div>
+        </div>
+        <?php endif;?>
+</div>
+<div class="clearingDiv"><!-- --></div>

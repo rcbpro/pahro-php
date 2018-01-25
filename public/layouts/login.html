@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Projects Abroad Human Rights Database *</title>
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/public/css/main.css" />
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/public/css/login.css" />
+<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/public/images/showimg.php.png" type="image/x-icon" /> 
+</head>
+<body onload="document.getElementById('txt_username').focus();">
+<div id="loginWrapper" align="center">
+	<span class="defaultFont">Projects Abroad Human Rights Database Login</span>
+	<div class="login-er-wrap"><?php echo (isset($headerDivTinyMsg)) ? $headerDivTinyMsg : "";?></div>
+    <div id="loginScreen" align="left">
+        <form name="login_form" action="http://<?php echo $_SERVER['HTTP_HOST'];?>/system/login/" method="post">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><span class="defaultFont">Username</span></td>            
+            </tr>
+            <tr>
+                <td><!-- --></td>            
+            </tr>        
+            <tr>
+                <td><input id="txt_username" type="text" class="inputs defaultFont" name="user_login[username]" value="<?php echo (isset($_SESSION['user_login']['username'])) ? $_SESSION['user_login']['username'] : '';?>" />
+                </td>
+            </tr>
+            <tr>
+                <td><!-- --></td>            
+            </tr>        
+            <tr>
+                <td><span class="defaultFont">Password</span></td>            
+            </tr>
+            <tr>
+                <td><!-- --></td>            
+            </tr>        
+            <tr>
+                <td>
+                <input type="password" class="inputs defaultFont" name="user_login[password]" value="" />
+                </td>            
+            </tr>        
+            <tr>
+                <td><div class="tinyHeight"><!-- --></div></td>            
+            </tr>        
+            <tr>
+                <td><input type="submit" name="login_submit" value="Login" class="defaultFont inputs submit l-input" /></td>            
+            </tr>        
+        </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

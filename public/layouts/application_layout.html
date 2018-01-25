@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title><?php echo $site_config['title'];?></title>
+<link href="<?php echo $site_config['base_url'];?>public/css/main.css" type="text/css" rel="stylesheet" />
+<link rel="shortcut icon" href="<?php echo $site_config['base_url'];?>public/images/showimg.php.png" type="image/x-icon" /> 
+<script src="<?php echo $site_config['base_url'];?>public/js/jquery.js" language="javascript" type="text/javascript"></script>
+<script src="<?php echo $site_config['base_url'];?>public/js/common.js.php" language="javascript" type="text/javascript"></script>
+<script src="<?php echo $site_config['base_url'];?>public/js/jquery.autocomplete.js" language="javascript" type="text/javascript"></script>
+
+<?php if(strstr($_SERVER['REQUEST_URI'],'file-manager')){?>
+<link href="files/file-manager.css" rel="stylesheet" type="text/css" />
+<link href="files/themes/custom-theme/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+<link href="files/table-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="files/file-manager.js"></script>
+<script type="text/javascript" language="javascript" src="files/jquery.dataTables.js"></script>
+<?php }?>
+
+<?php if(strstr($_SERVER['REQUEST_URI'],'import')){?>
+<link type="text/css" href="<?php echo $site_config['base_url'];?>/file-manager/files/themes/custom-theme/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.ui.core.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.ui.widget.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.ui.button.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.ui.position.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.ui.dialog.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.effects.core.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo $site_config['base_url'];?>public/modal/jquery.effects.fade.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+	//history
+    $("#d-h-sa").dialog("destroy");	
+	$("#d-h-sa").dialog({
+		autoOpen: false,
+		height: 422,
+		hide:'fade',
+		width: 440,
+		modal: true,
+		buttons: {
+			Close: function() {
+				$(this).dialog('close');
+			}
+		},
+		close: function(){
+		}
+		
+	});
+    
+    $("#d-h-ga").dialog("destroy");	
+	$("#d-h-ga").dialog({
+		autoOpen: false,
+		height: 422,
+		hide:'fade',
+		width: 440,
+		modal: true,
+		buttons: {
+			Close: function() {
+				$(this).dialog('close');
+			}
+		},
+		close: function(){
+		}
+		
+	});
+});
+</script>
+
+<?php }?>
+
+</head>
+<body>
+	<div id="main_container">
+    	<!-- Start of the Header Div -->
+    	<div id="header_div">
+        	<a href="<?php echo $site_config['base_url'];?>"><div id="header_logo_div"></div></a>
+	        <?php include 'main_find_form.html';?>            
+        </div>
+        <!-- End of the Header -->        
+        <!-- Start of the Left Menu Div -->
+        <?php include 'left_menu.html';?>        
+            <!-- End of the Left Menu Div -->
+            <!-- Start of the Conent Area -->
+            <div id="content_area">   
+                <?php include ($whichFileToInclude != "") ? $whichFileToInclude : (($file_manager_template) ? $_SERVER['DOCUMENT_ROOT'].DS."file-manager".DS."index.php" : ""); ?>
+                <script language="javascript" type="text/javascript">set_dim();</script>
+            </div>
+        </div>
+        <!-- End of the Conent Area -->
+	    <div class="clearingDiv"><!-- --></div>
+    </div>
+</body>
+</html>

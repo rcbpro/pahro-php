@@ -1,0 +1,1 @@
+<?php include VIEW_PATH.'case-category/add.php';?>

@@ -1,0 +1,55 @@
+#sidebarmenu_wrap{
+	width:200px;
+	float:left;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+#sidebarmenu{
+	text-indent:20px;
+	overflow:auto;
+}
+
+#ddblueblockmenu{
+
+border-bottom-width: 0;
+width: 200px;
+}
+
+#ddblueblockmenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font: normal 90% 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+}
+
+#ddblueblockmenu li a{
+display: block;
+padding: 3px 0;
+text-indent:20px;
+/*padding-left: 9px;*/
+/*width: 176px; /*185px minus all left/right paddings and margins*/
+text-decoration: none;
+color: #000;
+background-color: #f7f0f7;
+border-bottom: 1px solid #c893c7;
+}
+
+
+* html #ddblueblockmenu li a{ /*IE only */
+width: 100%; /*IE 5*/
+
+}
+
+#ddblueblockmenu li a:hover {
+background: #e3c9e4;
+border-left-color: #c893c7;
+}
+
+#ddblueblockmenu div.menutitle{
+color: white;
+border-bottom: 1px solid black;
+padding: 2px 0;
+text-indent:5px;
+background-color: #902790;
+font: bold 90% 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+}

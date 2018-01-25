@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+.defaultFont{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+.largeFont{
+	font-size:13px;
+	font-weight:bold;
+}
+.mediumLargeFont{
+	font-size:13px;
+	font-weight:normal;
+}
+.smallFont{
+	font-size:9px;
+}
+.boldText{
+	font-weight:bold;
+}
+.marginRight{
+	margin-right:10px;
+}
+.marginTop{
+	margin-top:5px;
+}
+.clearingDiv{
+	height:0px;
+	font-size:0;
+	clear:both;
+}
+.tinyHeight{
+	height:10px;
+	width:25px;
+}
+.smallHeight{
+	height:20px;
+	width:25px;
+}
+.smallHeight2{
+	height:10px;
+	width:25px;
+}
+.floatLeft{
+	float:left;
+}
+.floatRight{
+	float:right;
+}
+.someWidth{
+	width:50px;
+	height:20px;
+}
+.someHeight{
+	height:35px;
+	width:100px;
+}
+.paddingLeft{
+	padding-left:25px;
+}
+.someWidth2{
+	width:75px;
+	height:20px;
+}
+.someWidth3{
+	width:100px;
+	height:20px;
+}
+.someWidth4{
+	width:115px;
+	height:20px;
+}
+.someWidth6{
+	width:135px;
+	height:20px;
+}
+.lineHeight{
+	line-height:17px;				
+}
+.specializedTexts{
+	color:#00573D;
+	cursor:text !important;
+}
+.collapse-boder{
+	border-collapse:collapse;
+}
+.text-center-align{
+	text-align:center;
+}
+.specializedTexts2{
+	color:#FF0000;
+}
+.font-normal{
+	font-weight:normal;
+}
+select{
+	font-size:12px;
+}
+.text-unserline{
+	text-decoration:underline;
+}
+.display-block{
+	display:block;
+}
+.text-align{
+	text-align:center !important;
+}
+.note-cats div{
+	margin-top:3px;
+}

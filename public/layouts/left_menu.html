@@ -1,0 +1,31 @@
+<?php $visitedStyle = "style=\"background-color:#c893c7;color:#000;\"";?>
+<div id="content-wrap">
+<div id="sidebarmenu_wrap">
+    <div id="ddblueblockmenu">
+    
+	<?php foreach($left_menu_system as $each_menu):
+            $controller = explode("/", $each_menu['menu_url']);
+            $controller = $controller[0];
+    ?>
+        <?php if ($each_menu['menu_url'] == ""):?>
+            <div class="menutitle"><?php echo $each_menu['menu_text'];?></div>
+        <?php else:?>
+                <ul>                     
+                	<li>
+                        <a <?php echo Configuration::is_current_url($_SERVER['REQUEST_URI'], $each_menu['menu_url']) ? $visitedStyle : "";?>
+                           href="<?php echo $site_config['base_url'].$each_menu['menu_url'];?>">
+                           <?php //if (strstr($_SERVER['REQUEST_URI'], $controller.DS."show")){
+                                    //echo str_replace("Manage", "View", $each_menu['menu_text']);
+                                 //}elseif(strstr($_SERVER['REQUEST_URI'], $controller.DS."edit")){
+                                    //echo str_replace("Manage", "Edit", $each_menu['menu_text']);							 	
+                                 //}else{
+                                    echo ($each_menu['menu_text'] == "Logout") ? $each_menu['menu_text']." ".$_SESSION['logged_user']['username'] : $each_menu['menu_text'];
+                                 //}
+                            ?></a>
+                    </li>
+                </ul>
+        <?php endif;?>        	
+    <?php endforeach;?>
+
+    </div>
+</div>
